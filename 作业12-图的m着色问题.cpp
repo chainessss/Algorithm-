@@ -45,7 +45,11 @@ int main()
 	}
 
 	cout << "图G的着色方案如下：" << endl;
-	cout << "当m=" << M << "时，图G的可行着色方案数目为：" << mColoring(N, M, a) << endl;
+	if (mColoring(N, M, a) != 0)
+		cout << "当m=" << M << "时，图G的可行着色方案数目为：" << mColoring(N, M, a) << endl;
+	else
+		cout << "No" << endl;
+
 	for (int i = 1; i <= N; i++)
 	{
 		delete[] a[i];
@@ -66,7 +70,8 @@ void Color::Backtrack(int t)
 	{
 		for (int i = 1; i <= m; i++) {
 			x[t] = i;
-			if (Ok(t)) Backtrack(t + 1);
+			if (Ok(t)) 
+				Backtrack(t + 1);
 		}
 	}
 }
